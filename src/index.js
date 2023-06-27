@@ -90,7 +90,7 @@ const predefinedUsers = async () => {
 
 predefinedUsers();
 
-const storage = multer.diskStorage({
+/*const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
   },
@@ -99,7 +99,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage });*/
 
 app.post("/employee/login", async (req, res) => {
   const { username, password } = req.body;
@@ -143,10 +143,10 @@ app.post("/owner/login", async (req, res) => {
 
 app.post(
   "/pool",
-  upload.fields([
+  /*upload.fields([
     { name: "startPictures", maxCount: 3 },
     { name: "endPictures", maxCount: 3 },
-  ]),
+  ]),*/
   async (req, res) => {
     try {
       const {
@@ -200,7 +200,7 @@ app.post(
       }
 
       //try {
-      const startPictures = req.files["startPictures"].map((file) => ({
+      /*const startPictures = req.files["startPictures"].map((file) => ({
         data: fs.readFileSync(file.path),
         contentType: file.mimetype,
       }));
@@ -208,7 +208,7 @@ app.post(
       const endPictures = req.files["endPictures"].map((file) => ({
         data: fs.readFileSync(file.path),
         contentType: file.mimetype,
-      }));
+      }));*/
 
       const pool = new Pool({
         username,
@@ -221,15 +221,15 @@ app.post(
         chemicalsQuantity: isNumeric(chemicalsQuantity)
           ? Number(chemicalsQuantity)
           : null,
-        startPictures,
-        endPictures,
+        //startPictures,
+        //endPictures,
         napomena,
       });
 
       await pool.save();
 
-      req.files["startPictures"].forEach((file) => fs.unlinkSync(file.path));
-      req.files["endPictures"].forEach((file) => fs.unlinkSync(file.path));
+      /* req.files["startPictures"].forEach((file) => fs.unlinkSync(file.path));
+      req.files["endPictures"].forEach((file) => fs.unlinkSync(file.path));*/
 
       res
         .status(200)
