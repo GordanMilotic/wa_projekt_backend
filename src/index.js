@@ -16,7 +16,8 @@ const port = 4001;
 
 app.use(
   cors({
-    origin: "https://pool-evidence-frontend.onrender.com",
+    origin: "*",
+    optionsSuccessStatus: 200,
   })
 );
 app.use(express.json());
