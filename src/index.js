@@ -160,7 +160,7 @@ app.post(
         chemicalsQuantity,
         napomena,
       } = req.body;
-
+      console.log(req.body);
       if (!name || !phLevel || !clLevel || !username) {
         return res
           .status(400)
