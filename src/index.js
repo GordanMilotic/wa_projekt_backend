@@ -200,7 +200,7 @@ app.post(
       }
 
       //try {
-      /*const startPictures = req.files["startPictures"].map((file) => ({
+      /* const startPictures = req.files["startPictures"].map((file) => ({
         data: fs.readFileSync(file.path),
         contentType: file.mimetype,
       }));
@@ -221,14 +221,14 @@ app.post(
         chemicalsQuantity: isNumeric(chemicalsQuantity)
           ? Number(chemicalsQuantity)
           : null,
-        //startPictures,
-        //endPictures,
+        /* startPictures,
+        endPictures,*/
         napomena,
       });
 
       await pool.save();
 
-      /* req.files["startPictures"].forEach((file) => fs.unlinkSync(file.path));
+      /*req.files["startPictures"].forEach((file) => fs.unlinkSync(file.path));
       req.files["endPictures"].forEach((file) => fs.unlinkSync(file.path));*/
 
       res
