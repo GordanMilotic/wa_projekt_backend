@@ -16,14 +16,14 @@ const port = 4001;
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://pool-evidence-frontend.onrender.com",
   })
 );
 app.use(express.json());
 app.use(bodyParser.json());
 
 app.listen(port, () => {
-  console.log("hello", port);
+  console.log("Listening on port", port);
 });
 
 const uri =
