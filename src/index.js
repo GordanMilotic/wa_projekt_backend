@@ -158,44 +158,46 @@ app.post(
       chemicalsQuantity,
       napomena,
     } = req.body;
-
-    if (!name || !phLevel || !clLevel || !username) {
-      return res
-        .status(400)
-        .json({ message: "Sva polja moraju biti popunjena!" });
-    }
-
-    const isNumeric = (value) => !isNaN(parseFloat(value)) && isFinite(value);
-    if (tabletCount !== "" && !isNumeric(tabletCount)) {
-      return res.status(400).json({ message: "Neispravan broj tableta!" });
-    }
-
-    const validCleaningMethods = [
-      "Usisavanje",
-      "Četkanje",
-      "Pranje rubne linije",
-    ];
-
-    if (
-      cleaningMethods &&
-      !cleaningMethods.every((method) => validCleaningMethods.includes(method))
-    ) {
-      return res
-        .status(400)
-        .json({ message: "Morate izabrati valjanu metodu čišćenja!" });
-    }
-
-    const validChemicals = ["PH minus", "PH plus", "Bez kemije"];
-    if (
-      chemicalsPoured !== "Bez kemije" &&
-      !validChemicals.includes(chemicalsPoured)
-    ) {
-      return res
-        .status(400)
-        .json({ message: "Morate izabrati valjanu kemiju!" });
-    }
-
     try {
+      if (!name || !phLevel || !clLevel || !username) {
+        return res
+          .status(400)
+          .json({ message: "Sva polja moraju biti popunjena!" });
+      }
+
+      const isNumeric = (value) => !isNaN(parseFloat(value)) && isFinite(value);
+      if (tabletCount !== "" && !isNumeric(tabletCount)) {
+        return res.status(400).json({ message: "Neispravan broj tableta!" });
+      }
+
+      const validCleaningMethods = [
+        "Usisavanje",
+        "Četkanje",
+        "Pranje rubne linije",
+      ];
+
+      if (
+        cleaningMethods &&
+        !cleaningMethods.every((method) =>
+          validCleaningMethods.includes(method)
+        )
+      ) {
+        return res
+          .status(400)
+          .json({ message: "Morate izabrati valjanu metodu čišćenja!" });
+      }
+
+      const validChemicals = ["PH minus", "PH plus", "Bez kemije"];
+      if (
+        chemicalsPoured !== "Bez kemije" &&
+        !validChemicals.includes(chemicalsPoured)
+      ) {
+        return res
+          .status(400)
+          .json({ message: "Morate izabrati valjanu kemiju!" });
+      }
+
+      //try {
       const startPictures = req.files["startPictures"].map((file) => ({
         data: fs.readFileSync(file.path),
         contentType: file.mimetype,
