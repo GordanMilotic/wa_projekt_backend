@@ -147,18 +147,19 @@ app.post(
     { name: "endPictures", maxCount: 3 },
   ]),
   async (req, res) => {
-    const {
-      username,
-      name,
-      phLevel,
-      clLevel,
-      tabletCount,
-      cleaningMethods,
-      chemicalsPoured,
-      chemicalsQuantity,
-      napomena,
-    } = req.body;
     try {
+      const {
+        username,
+        name,
+        phLevel,
+        clLevel,
+        tabletCount,
+        cleaningMethods,
+        chemicalsPoured,
+        chemicalsQuantity,
+        napomena,
+      } = req.body;
+
       if (!name || !phLevel || !clLevel || !username) {
         return res
           .status(400)
