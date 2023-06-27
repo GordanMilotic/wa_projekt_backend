@@ -8,7 +8,7 @@ const poolSchema = new mongoose.Schema({
   cleaningMethods: [String],
   chemicalsPoured: String,
   chemicalsQuantity: Number,
-  /*startPictures: [
+  startPictures: [
     {
       data: Buffer,
       contentType: String,
@@ -19,7 +19,7 @@ const poolSchema = new mongoose.Schema({
       data: Buffer,
       contentType: String,
     },
-  ],*/
+  ],
   username: String,
   napomena: String,
 });
